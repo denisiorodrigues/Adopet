@@ -2,6 +2,7 @@ using System;
 
 namespace Alura.Adopet.Console;
 
+[DocComando(comando: "help", instrucao: "comando que exibe informações de ajuda.ao ")]
 public class Ajuda
 {
     public void Executar(string[] parametrosInformados) 
