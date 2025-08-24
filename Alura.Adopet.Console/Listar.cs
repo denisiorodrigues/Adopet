@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace Alura.Adopet.Console;
 
-[DocComando(comando: "list", instrucao: "adopet list comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
+[DocComando(instrucao: "list", documentacao: "adopet list comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
 public class Listar
 {
     private HttpClient client;
