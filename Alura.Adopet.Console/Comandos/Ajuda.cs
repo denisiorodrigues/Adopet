@@ -4,7 +4,7 @@ using Alura.Adopet.Console.Atributos;
 namespace Alura.Adopet.Console.Comandos;
 
 [DocComando(instrucao: "help", documentacao: "comando que exibe informações de ajuda.ao ")]
-public class Ajuda
+public class Ajuda :IComando
 {
     private Dictionary<string, DocComando> docs;
 
@@ -16,8 +16,14 @@ public class Ajuda
             .Select(t => t.GetCustomAttribute<DocComando>()!)
             .ToDictionary(t => t.Instrucao);
     }
-
-    public void Executar(string[] parametrosInformados)
+    
+    public Task ExecutarAsync(string[] args)
+    {
+        this.Executar(args);
+        return Task.CompletedTask;
+    }
+    
+    private void Executar(string[] parametrosInformados)
     {
         System.Console.WriteLine("Lista de comandos.");
         if (parametrosInformados.Length == 1)

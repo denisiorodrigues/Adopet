@@ -6,16 +6,21 @@ using Alura.Adopet.Console.Atributos;
 namespace Alura.Adopet.Console.Comandos;
 
 [DocComando(instrucao: "list", documentacao: "adopet list comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
-public class Listar
+public class Listar : IComando
 {
-    private HttpClient client;
+    private HttpClient _client;
 
     public Listar()
     {
-        this.client = ConfiguraHttpClient("http://localhost:5057");
+        this._client = ConfiguraHttpClient("http://localhost:5057");
     }
-
-    public async Task Pets()
+    
+    public async Task ExecutarAsync(string[] args)
+    {
+        await this.Pets();
+    }
+    
+    private async Task Pets()
     {
         var pets = await ListPetsAsync();
         foreach(Pet pet in pets)
@@ -36,7 +41,7 @@ public class Listar
     
     private async Task<IEnumerable<Pet>?> ListPetsAsync()
     {
-        HttpResponseMessage response = await client.GetAsync("pet/list");
+        HttpResponseMessage response = await _client.GetAsync("pet/list");
         return await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();
     }
 }

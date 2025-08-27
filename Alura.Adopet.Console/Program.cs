@@ -10,20 +10,19 @@ try
     {
         case "import":
             var importar = new Importar();
-            await importar.ArquivoPetAsync(caminhoDoArquivoParaImportacao: args[1].Trim());
+            await importar.ExecutarAsync(args);
             break;
         case "help":
             var ajuda = new Ajuda();
-            ajuda.Executar(args);
+            await ajuda.ExecutarAsync(args);
 ;           break;
         case "show":
-            string caminhoDoArquivoASerExibido =  args[1];
             var exibir = new Exibir();
-            exibir.ItensDoArquivo(caminhoDoArquivoASerExibido);
+            await exibir.ExecutarAsync(args);
             break;
         case "list":
             var listar = new Listar();
-            await listar.Pets();
+            await listar.ExecutarAsync(args);
             break;
         default:
             Console.WriteLine("Comando inválido!");

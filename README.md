@@ -25,6 +25,7 @@ Abaixo as principais funcionalidades ou características do projeto.
 * Cadastrar um animal;
 * Editar um animal;
 * Deletar um animal.
+* 
 
 ## Tecnologias Utilizadas
 
