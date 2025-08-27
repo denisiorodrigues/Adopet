@@ -2,20 +2,14 @@
 
 Console.ForegroundColor = ConsoleColor.Green;
 
-IDictionary<string, IComando> comandos = new Dictionary<string, IComando>()
-{
-    {"import", new Importar()},
-    {"help", new Ajuda()},
-    {"show", new Exibir()},
-    {"list", new Listar()},
-};
+var comandoDoSistema = new ComandosDoSistema();
 
 try
 {
     string comando = args[0].Trim();
-    if (comandos.ContainsKey(comando))
+    IComando? cmd = comandoDoSistema[comando];
+    if (cmd is not null)
     {
-        var cmd = comandos[comando];
         await cmd.ExecutarAsync(args);
     }
     else
