@@ -1,7 +1,7 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
-namespace Alura.Adopet.Console;
+namespace Alura.Adopet.Console.Comandos;
 
 [DocComando(instrucao: "list", documentacao: "adopet list comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
 public class Listar
