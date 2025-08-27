@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
+using Alura.Adopet.Console.Modelo;
 
-namespace Alura.Adopet.Console;
+namespace Alura.Adopet.Console.Utilitarios;
 
 public class LeitorDeArquivos
 {

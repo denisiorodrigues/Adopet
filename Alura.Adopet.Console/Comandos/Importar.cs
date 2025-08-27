@@ -1,5 +1,8 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using Alura.Adopet.Console.Modelo;
+using Alura.Adopet.Console.Atributos;
+using Alura.Adopet.Console.Utilitarios;
 
 namespace Alura.Adopet.Console.Comandos;
 
@@ -19,7 +22,7 @@ public class Importar
         var leitorDeArquivos = new LeitorDeArquivos();
         var listDePets = leitorDeArquivos.RealizarLeitura(caminhoDoArquivoParaImportacao);
 
-        foreach (var pet in listDePets)
+        foreach (Pet pet in listDePets)
         {
             System.Console.WriteLine(pet);
             try

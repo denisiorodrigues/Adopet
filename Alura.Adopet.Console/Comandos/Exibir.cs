@@ -1,3 +1,6 @@
+using Alura.Adopet.Console.Atributos;
+using Alura.Adopet.Console.Utilitarios;
+
 namespace Alura.Adopet.Console.Comandos;
 
 [DocComando(instrucao: "show", documentacao: "adopet show <arquivo> comando que exibe no terminal o conteúdo do arquivo importado.")]

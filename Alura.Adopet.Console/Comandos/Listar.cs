@@ -1,5 +1,7 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using Alura.Adopet.Console.Modelo;
+using Alura.Adopet.Console.Atributos;
 
 namespace Alura.Adopet.Console.Comandos;
 
@@ -16,7 +18,7 @@ public class Listar
     public async Task Pets()
     {
         var pets = await ListPetsAsync();
-        foreach(var pet in pets)
+        foreach(Pet pet in pets)
         {
             System.Console.WriteLine(pet);
         }
