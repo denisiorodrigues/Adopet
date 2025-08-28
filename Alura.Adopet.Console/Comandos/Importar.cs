@@ -9,11 +9,11 @@ namespace Alura.Adopet.Console.Comandos;
 [DocComando(instrucao: "import", documentacao: "adopet import <arquivo> comando que realiza a importação do arquivo de pets.")]
 public class Importar : IComando
 {
-    private readonly HttpClient _client;
+    private readonly HttpClientPet _client;
 
     public Importar()
     {
-        _client = ConfiguraHttpClient("http://localhost:5057");
+        _client = new  HttpClientPet();
     }
     
     public async Task ExecutarAsync(string[] args)
@@ -32,7 +32,7 @@ public class Importar : IComando
             System.Console.WriteLine(pet);
             try
             {
-                var resposta = await CreatePetAsync(pet);
+                var resposta = await _client.CreatePetAsync(pet);
             }
             catch (Exception ex)
             {
@@ -41,24 +41,5 @@ public class Importar : IComando
         }
 
         System.Console.WriteLine("Importação concluída!");
-    }
-
-    private Task<HttpResponseMessage> CreatePetAsync(Pet pet)
-    {
-        HttpResponseMessage? response = null;
-        using (response = new HttpResponseMessage())
-        {
-            return _client.PostAsJsonAsync("pet/add", pet);
-        }
-    }
-
-    private HttpClient ConfiguraHttpClient(string url)
-    {
-        HttpClient _client = new HttpClient();
-        _client.DefaultRequestHeaders.Accept.Clear();
-        _client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-        _client.BaseAddress = new Uri(url);
-        return _client;
     }
 }
