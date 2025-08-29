@@ -7,11 +7,10 @@ namespace Alura.Adopet.Console.Utilitarios;
 public class HttpClientPet
 {
     private HttpClient _httpClient;
-    private string url = "http://localhost:5057";
 
-    public HttpClientPet()
+    public HttpClientPet(string uri = "http://localhost:5057")
     {
-        _httpClient = this.ConfiguraHttpClient(url);
+        _httpClient = this.ConfiguraHttpClient(uri);
     }
     
     private HttpClient ConfiguraHttpClient(string url)
