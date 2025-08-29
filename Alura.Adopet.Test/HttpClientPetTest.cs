@@ -14,4 +14,12 @@ public class HttpClientPetTest
         Assert.NotNull(pets);
         Assert.NotEmpty(pets);
     }
+    
+    [Fact]
+    public async Task DeveRetornarUmaExcecaoNaListagemDePets()
+    {
+        var httpClientPet = new HttpClientPet("http://localhost:59999");
+
+        await Assert.ThrowsAnyAsync<Exception>(() => httpClientPet.ListPetsAsync());
+    }
 }
