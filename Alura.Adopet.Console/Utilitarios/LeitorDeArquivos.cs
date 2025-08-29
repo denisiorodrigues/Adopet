@@ -14,11 +14,7 @@ public class LeitorDeArquivos
             while (!sr.EndOfStream)
             {
                 // separa linha usando ponto e vírgula
-                string[] propriedades = sr.ReadLine().Split(';');
-                Pet pet = new Pet(Guid.Parse(propriedades[0]),
-                    propriedades[1],
-                    TipoPet.Cachorro
-                );
+               var pet = sr.ReadLine()?.ConverteDoTexto();
                 pets.Add(pet);
             }
 
