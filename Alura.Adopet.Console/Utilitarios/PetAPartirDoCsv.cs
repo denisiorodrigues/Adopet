@@ -6,7 +6,11 @@ public static class PetAPartirDoCsv
 {
     public static Pet ConverteDoTexto(this string linha)
     {
+        if (string.IsNullOrEmpty(linha)) 
+            return null;
+        
         string[] propriedades = linha.Split(';');
+
         return new Pet(
             Guid.Parse(propriedades[0]),
             propriedades[1],
