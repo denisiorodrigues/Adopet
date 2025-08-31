@@ -1,11 +1,13 @@
-﻿namespace Alura.Adopet.Test;
+﻿using Alura.Adopet.Console.Utilitarios;
 
-public class DocComandoAplicadosTest
+namespace Alura.Adopet.Test;
+
+public class GeraDocumentacaoTest
 {
     [Fact]
-    public void DeveRetornarTodasAsDocumentacoesComSucsso()
+    public void QuandoExistemComandosDeveRetornarDicionarioNaoVazio()
     {
-        var docs = Console.Utilitarios.DocComandoAplicados.ObterTodos();
+        var docs = GeraDocumentacao.ObterTodos();
         Assert.NotEmpty(docs);
         Assert.Contains("help", docs.Keys);
         Assert.Contains("import", docs.Keys);

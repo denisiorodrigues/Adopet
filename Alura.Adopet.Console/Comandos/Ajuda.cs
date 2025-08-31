@@ -1,4 +1,3 @@
-using System.Reflection;
 using Alura.Adopet.Console.Atributos;
 using Alura.Adopet.Console.Utilitarios;
 
@@ -11,7 +10,7 @@ public class Ajuda :IComando
 
     public Ajuda()
     {
-        docs = DocComandoAplicados.ObterTodos();
+        docs = GeraDocumentacao.ObterTodos();
     }
     
     public Task ExecutarAsync(string[] args)

@@ -3,7 +3,7 @@ using Alura.Adopet.Console.Atributos;
 
 namespace Alura.Adopet.Console.Utilitarios;
 
-public static class DocComandoAplicados
+public class GeraDocumentacao
 {
     public static Dictionary<string, DocComando> ObterTodos()
     {
