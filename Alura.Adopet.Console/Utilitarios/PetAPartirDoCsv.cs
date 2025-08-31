@@ -29,9 +29,11 @@ public static class PetAPartirDoCsv
             throw new ArgumentException("O tipo do pet é inválido. Use 0 para Gato e 1 para Cachorro.");
         }
 
+        var nome = propriedades[1];
+
         return new Pet(
             petId,
-            propriedades[1],
+            nome,
             tipoPet == 0 ? TipoPet.Gato : TipoPet.Cachorro
         );
     } 
