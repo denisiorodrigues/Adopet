@@ -10,7 +10,7 @@ public class Ajuda :IComando
 
     public Ajuda()
     {
-        docs = GeraDocumentacao.ObterTodos();
+        docs = DocumentacaoDoSistema.ObterTodos();
     }
     
     public Task ExecutarAsync(string[] args)

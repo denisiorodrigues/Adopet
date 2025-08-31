@@ -7,7 +7,7 @@ public class GeraDocumentacaoTest
     [Fact]
     public void QuandoExistemComandosDeveRetornarDicionarioNaoVazio()
     {
-        var docs = GeraDocumentacao.ObterTodos();
+        var docs = DocumentacaoDoSistema.ObterTodos();
         Assert.NotEmpty(docs);
         Assert.Contains("help", docs.Keys);
         Assert.Contains("import", docs.Keys);
