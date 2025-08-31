@@ -8,7 +8,7 @@ public class PetAPartirDoCsvTest
     [Fact]
     public void QuandoStringForValidaRetornaUmPet()
     {
-        var linha = "609c9b0d-aa02-459f-a340-256513fc9bad;Nina;2";
+        var linha = "609c9b0d-aa02-459f-a340-256513fc9bad;Nina;1";
         
         Pet pet = linha.ConverteDoTexto();
         
@@ -16,28 +16,34 @@ public class PetAPartirDoCsvTest
     }
 
     [Fact]
-    public void QuandoStringVaziaDeveRetornarUmPetNulo()
+    public void QuandoStringVaziaDeveRetornarUmArgumentException()
     {
-        var linha = string.Empty;
-        
-        Pet pet = linha.ConverteDoTexto();
-        
-        Assert.Null(pet);
+        string? linha = null;
+
+        Assert.Throws<ArgumentException>(() => linha.ConverteDoTexto());
     }
 
     [Fact]
     public void QuandoAQuantidadeDeCampoEInsuficienteDeveRetornarUmaExcecao()
     {
-        var linha = "609c9b0d-aa02-459f-a340-256513fc9bad";
+        var linha = "609c9b0d-aa02-459f-a340-256513fc9bad;Pet";
         
-        Assert.Throws<IndexOutOfRangeException>(() => linha.ConverteDoTexto());
+        Assert.Throws<ArgumentException>(() => linha.ConverteDoTexto());
     }
     
     [Fact]
-    public void QuandoInformarUmaGuidInvalidaDeveRetonarUmaFormatException()
+    public void QuandoInformarUmaGuidInvalidaDeveRetonarUmaArgumentException()
     {
-        var linha = "609c9b0d";
+        var linha = "sdad;Pet;1";
         
-        Assert.Throws<FormatException>(() => linha.ConverteDoTexto());
+        Assert.Throws<ArgumentException>(() => linha.ConverteDoTexto());
+    }
+    
+    [Fact]
+    public void QuandoTipoInvalidoDeveLancarArgumentException()
+    {
+        var linha = "609c9b0d-aa02-459f-a340-256513fc9bad;Pet;99";
+
+        Assert.Throws<ArgumentException>(() => linha.ConverteDoTexto());
     }
 }

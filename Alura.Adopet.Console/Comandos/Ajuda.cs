@@ -1,5 +1,6 @@
 using System.Reflection;
 using Alura.Adopet.Console.Atributos;
+using Alura.Adopet.Console.Utilitarios;
 
 namespace Alura.Adopet.Console.Comandos;
 
@@ -10,11 +11,7 @@ public class Ajuda :IComando
 
     public Ajuda()
     {
-        docs = Assembly.GetExecutingAssembly()
-            .GetTypes()
-            .Where(t => t.GetCustomAttributes<DocComando>().Any())
-            .Select(t => t.GetCustomAttribute<DocComando>()!)
-            .ToDictionary(t => t.Instrucao);
+        docs = DocComandoAplicados.ObterTodos();
     }
     
     public Task ExecutarAsync(string[] args)
