@@ -5,7 +5,7 @@ namespace Alura.Adopet.Console.Utilitarios;
 
 public class LeitorDeArquivos
 {
-    public ICollection<Pet> RealizarLeitura(string caminhoDoArquivoASerLido)
+    public ICollection<Pet> RealizarLeitura(string? caminhoDoArquivoASerLido)
     {
         var pets = new Collection<Pet>();
         
