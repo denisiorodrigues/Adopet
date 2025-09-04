@@ -8,19 +8,9 @@ public class HttpClientPet
 {
     private HttpClient _httpClient;
 
-    public HttpClientPet(string uri = "http://localhost:5057")
+    public HttpClientPet(HttpClient httpClient)
     {
-        _httpClient = this.ConfiguraHttpClient(uri);
-    }
-    
-    private HttpClient ConfiguraHttpClient(string url)
-    {
-        HttpClient _client = new HttpClient();
-        _client.DefaultRequestHeaders.Accept.Clear();
-        _client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-        _client.BaseAddress = new Uri(url);
-        return _client;
+        _httpClient = httpClient;
     }
 
     public async Task<IEnumerable<Pet>?> ListPetsAsync()

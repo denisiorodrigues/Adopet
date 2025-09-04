@@ -1,7 +1,5 @@
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Atributos;
+using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
 
 namespace Alura.Adopet.Console.Comandos;
@@ -11,9 +9,9 @@ public class Importar : IComando
 {
     private readonly HttpClientPet _client;
 
-    public Importar()
+    public Importar(HttpClientPet client)
     {
-        _client = new  HttpClientPet();
+        _client = client;
     }
     
     public async Task ExecutarAsync(string[] args)

@@ -11,9 +11,9 @@ public class Listar : IComando
 {
     private HttpClientPet _client;
 
-    public Listar()
+    public Listar(HttpClientPet client)
     {
-        this._client = new HttpClientPet();
+        this._client = client;
     }
     
     public async Task ExecutarAsync(string[] args)
