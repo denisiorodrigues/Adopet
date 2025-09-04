@@ -1,4 +1,5 @@
 using System.Net;
+using System.Net.Sockets;
 using Alura.Adopet.Console.Utilitarios;
 using Moq;
 using Moq.Protected;
@@ -70,5 +71,24 @@ public class HttpClientPetTest
 
         Assert.NotNull(pets);
         Assert.NotEmpty(pets);
+    }
+
+    [Fact]
+    public async Task QuandoApiForaDeveRetornarUmaExcecao()
+    {
+        var handlerMock = new Mock<HttpMessageHandler>();
+        handlerMock
+            .Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>())
+            .ThrowsAsync(new SocketException());   
+        
+        var httpClient = new Mock<HttpClient>(MockBehavior.Default, handlerMock.Object);
+        httpClient.Object.BaseAddress = new Uri("http://localhost:5057");
+        var httpClientPet = new HttpClientPet(httpClient.Object);
+        
+        Assert.ThrowsAsync<Exception>(() => httpClientPet.ListPetsAsync());
     }
 }
