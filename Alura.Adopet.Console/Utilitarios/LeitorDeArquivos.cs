@@ -5,8 +5,18 @@ namespace Alura.Adopet.Console.Utilitarios;
 
 public class LeitorDeArquivos
 {
-    public ICollection<Pet> RealizarLeitura(string? caminhoDoArquivoASerLido)
+    private readonly string? caminhoDoArquivoASerLido;
+
+    public LeitorDeArquivos(string? caminhoDoArquivoASerLido)
     {
+        this.caminhoDoArquivoASerLido = caminhoDoArquivoASerLido;
+    }
+
+    public Collection<Pet> RealizarLeitura()
+    {
+        if (string.IsNullOrEmpty(caminhoDoArquivoASerLido) || !File.Exists(caminhoDoArquivoASerLido))
+            return null;
+
         var pets = new Collection<Pet>();
         
         using (StreamReader sr = new StreamReader(caminhoDoArquivoASerLido))

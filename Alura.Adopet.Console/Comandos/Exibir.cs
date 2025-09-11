@@ -17,8 +17,8 @@ public class Exibir : IComando
         using (StreamReader sr = new StreamReader(caminhoDoArquivoASerExibido))
         {
             System.Console.WriteLine("----- Serão importados os dados abaixo -----");
-            var leitorDeArquivos =  new LeitorDeArquivos();
-            var pets = leitorDeArquivos.RealizarLeitura(caminhoDoArquivoASerExibido);
+            var leitorDeArquivos =  new LeitorDeArquivos(caminhoDoArquivoASerExibido);
+            var pets = leitorDeArquivos.RealizarLeitura();
             foreach (var pet in pets) 
             {
                 System.Console.WriteLine(pet);

@@ -21,11 +21,11 @@ public class LeitorDeArquivoTest
     {
         //Arrange            
         //Act
-        var listaDePets = new LeitorDeArquivos().RealizarLeitura("")!;
+        Collection<Pet> listaDePets = new LeitorDeArquivos(caminhoArquivo).RealizarLeitura()!;
         //Assert
         Assert.NotNull(listaDePets);
         Assert.Single(listaDePets);
-        Assert.IsType<List<Pet>?>(listaDePets);
+        Assert.IsType<Collection<Pet>?>(listaDePets);
     }
 
     [Fact]
@@ -33,7 +33,7 @@ public class LeitorDeArquivoTest
     {
         //Arrange            
         //Act
-        var listaDePets = new LeitorDeArquivos().RealizarLeitura("");
+        var listaDePets = new LeitorDeArquivos("").RealizarLeitura();
         //Assert
         Assert.Null(listaDePets);
     }
@@ -43,7 +43,7 @@ public class LeitorDeArquivoTest
     {
         //Arrange            
         //Act
-        var listaDePets = new LeitorDeArquivos().RealizarLeitura(null);
+        var listaDePets = new LeitorDeArquivos(null).RealizarLeitura();
         //Assert
         Assert.Null(listaDePets);
     }

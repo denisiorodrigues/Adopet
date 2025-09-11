@@ -21,7 +21,5 @@ public class ComandosDoSistema
         };
     }
     
-    
-    
     public IComando? this[string comando] => comandos.ContainsKey(comando) ? comandos[comando] : null;
 }
