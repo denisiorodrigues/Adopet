@@ -2,7 +2,7 @@
 
 Console.ForegroundColor = ConsoleColor.Green;
 
-var comandoDoSistema = new ComandosDoSistema();
+var comandoDoSistema = new ComandosDoSistema(args);
 
 try
 {

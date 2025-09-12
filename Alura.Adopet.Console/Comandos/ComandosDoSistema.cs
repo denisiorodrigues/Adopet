@@ -9,12 +9,15 @@ public class ComandosDoSistema
     private Importar importar;
     private Listar listar;
     private IDictionary<string, IComando> comandos;
-    public ComandosDoSistema()
+    private LeitorDeArquivos leitorDeArquivos;
+
+    public ComandosDoSistema(string[] args)
     {
         httpClientPet = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
+        leitorDeArquivos = new LeitorDeArquivos(args[1]);
         comandos = new Dictionary<string, IComando>()
         {
-            {"import", new Importar(httpClientPet)},
+            {"import", new Importar(httpClientPet, leitorDeArquivos)},
             {"help", new Ajuda()},
             {"show", new Exibir()},
             {"list", new Listar(httpClientPet)},

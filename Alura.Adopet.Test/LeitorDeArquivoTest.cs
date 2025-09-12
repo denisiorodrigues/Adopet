@@ -21,7 +21,7 @@ public class LeitorDeArquivoTest
     {
         //Arrange            
         //Act
-        Collection<Pet> listaDePets = new LeitorDeArquivos(caminhoArquivo).RealizarLeitura()!;
+        List<Pet> listaDePets = new LeitorDeArquivos(caminhoArquivo).RealizarLeitura()!;
         //Assert
         Assert.NotNull(listaDePets);
         Assert.Single(listaDePets);

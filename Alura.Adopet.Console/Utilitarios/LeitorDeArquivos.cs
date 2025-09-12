@@ -12,16 +12,13 @@ public class LeitorDeArquivos
         this.caminhoDoArquivoASerLido = caminhoDoArquivoASerLido;
     }
 
-    public Collection<Pet> RealizarLeitura()
+    public virtual List<Pet> RealizarLeitura()
     {
-        if (string.IsNullOrEmpty(caminhoDoArquivoASerLido) || !File.Exists(caminhoDoArquivoASerLido))
+        if (string.IsNullOrEmpty(caminhoDoArquivoASerLido))
             return null;
 
-        var pets = new Collection<Pet>();
+        var pets = new List<Pet>();
 
-        if(string.IsNullOrEmpty(caminhoDoArquivoASerLido))
-            return null;
-        
         using (StreamReader sr = new StreamReader(caminhoDoArquivoASerLido))
         {
             while (!sr.EndOfStream)
