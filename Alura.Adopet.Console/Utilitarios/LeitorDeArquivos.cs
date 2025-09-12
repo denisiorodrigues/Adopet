@@ -18,6 +18,9 @@ public class LeitorDeArquivos
             return null;
 
         var pets = new Collection<Pet>();
+
+        if(string.IsNullOrEmpty(caminhoDoArquivoASerLido))
+            return null;
         
         using (StreamReader sr = new StreamReader(caminhoDoArquivoASerLido))
         {
