@@ -2,7 +2,7 @@
 using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Servicos;
 using Alura.Adopet.Console.Utilitarios;
-using Moq;
+using Alura.Adopet.Test.DataBuilder;
 
 namespace Alura.Adopet.Test;
 
@@ -11,9 +11,10 @@ public class ImportIntegrationTest
     [Fact]
     public async Task QuandoAPIIEstaNoArDeveRetornarLista()
     {
-        var leitorDeArquivo = new Mock<LeitorDeArquivos>(MockBehavior.Default, It.IsAny<string>());
         var pet = new Pet(new Guid(), "Lima", TipoPet.Cachorro);
-        leitorDeArquivo.Setup(_ => _.RealizarLeitura()).Returns(new List<Pet>() { pet });
+        var listaDePet = new List<Pet>() { pet };
+
+        var leitorDeArquivo = LeitorDeArquivoMockBuilder.Novo(listaDePet);
 
         var httpClientPet = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
         var importar = new Importar(httpClientPet, leitorDeArquivo.Object);

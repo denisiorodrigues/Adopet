@@ -1,7 +1,6 @@
 using System.Collections.ObjectModel;
 using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
-using Moq;
 
 namespace Alura.Adopet.Test;
 
