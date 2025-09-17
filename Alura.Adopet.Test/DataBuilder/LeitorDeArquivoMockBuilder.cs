@@ -13,4 +13,11 @@ internal static class LeitorDeArquivoMockBuilder
 
         return leitorDeArquivoMock;
     }
+
+    public static Mock<LeitorDeArquivos> Novo()
+    {
+        var leitorDeArquivoMock = new Mock<LeitorDeArquivos>(MockBehavior.Default, It.IsAny<string>());
+
+        return leitorDeArquivoMock;
+    }
 }

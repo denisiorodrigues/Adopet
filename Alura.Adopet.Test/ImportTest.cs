@@ -22,5 +22,24 @@ namespace Alura.Adopet.Test
             
             httpClientPetMock.Verify(_ => _.CreatePetAsync(It.IsAny<Pet>()), Times.Never);
         }
+
+        [Fact]
+        public async Task QuandoArquivoNaoExistenteDeveGerarException()
+        {
+            //Arrange
+            List<Pet> listaDePet = new();
+            var leitor = LeitorDeArquivoMockBuilder.Novo(listaDePet);
+            leitor.Setup(_ => _.RealizarLeitura()).Throws<FileNotFoundException>();
+
+            var httpClientPet = new Mock<HttpClientPet>(MockBehavior.Default,
+                 It.IsAny<HttpClient>());
+
+            string[] args = { "import", "lista.csv" };
+
+            var import = new Importar(httpClientPet.Object, leitor.Object);
+
+            //Act+Assert
+            await Assert.ThrowsAnyAsync<Exception>(() => import.ExecutarAsync(args));
+        }
     }
 }
