@@ -1,9 +1,6 @@
-using System.Net;
-using System.Net.Sockets;
 using Alura.Adopet.Console.Utilitarios;
 using Alura.Adopet.Test.DataBuilder;
 using Moq;
-using Moq.Protected;
 
 namespace Alura.Adopet.Test;
 
