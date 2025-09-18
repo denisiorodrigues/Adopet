@@ -1,5 +1,6 @@
 using Alura.Adopet.Console.Atributos;
 using Alura.Adopet.Console.Utilitarios;
+using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos;
 
@@ -13,10 +14,10 @@ public class Ajuda :IComando
         docs = DocumentacaoDoSistema.ObterTodos();
     }
     
-    public Task ExecutarAsync(string[] args)
+    public Task<Result> ExecutarAsync(string[] args)
     {
         this.Executar(args);
-        return Task.CompletedTask;
+        return Task.FromResult(Result.Ok());
     }
     
     private void Executar(string[] parametrosInformados)

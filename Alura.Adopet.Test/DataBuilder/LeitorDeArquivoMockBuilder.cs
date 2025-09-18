@@ -6,7 +6,7 @@ namespace Alura.Adopet.Test.DataBuilder;
 
 internal static class LeitorDeArquivoMockBuilder
 {
-    public static Mock<LeitorDeArquivos> Novo(List<Pet> listaDePet)
+    public static Mock<LeitorDeArquivos> GetMock(List<Pet> listaDePet)
     {
         var leitorDeArquivoMock = new Mock<LeitorDeArquivos>(MockBehavior.Default, It.IsAny<string>());
         leitorDeArquivoMock.Setup(_ => _.RealizarLeitura()).Returns(listaDePet);
@@ -14,7 +14,7 @@ internal static class LeitorDeArquivoMockBuilder
         return leitorDeArquivoMock;
     }
 
-    public static Mock<LeitorDeArquivos> Novo()
+    public static Mock<LeitorDeArquivos> GetMock()
     {
         var leitorDeArquivoMock = new Mock<LeitorDeArquivos>(MockBehavior.Default, It.IsAny<string>());
 

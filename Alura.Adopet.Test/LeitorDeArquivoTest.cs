@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
 
@@ -24,7 +23,7 @@ public class LeitorDeArquivoTest
         //Assert
         Assert.NotNull(listaDePets);
         Assert.Single(listaDePets);
-        Assert.IsType<Collection<Pet>?>(listaDePets);
+        Assert.IsType<List<Pet>?>(listaDePets);
     }
 
     [Fact]

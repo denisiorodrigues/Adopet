@@ -14,7 +14,7 @@ public class ImportIntegrationTest
         var pet = new Pet(new Guid(), "Lima", TipoPet.Cachorro);
         var listaDePet = new List<Pet>() { pet };
 
-        var leitorDeArquivo = LeitorDeArquivoMockBuilder.Novo(listaDePet);
+        var leitorDeArquivo = LeitorDeArquivoMockBuilder.GetMock(listaDePet);
 
         var httpClientPet = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
         var importar = new Importar(httpClientPet, leitorDeArquivo.Object);

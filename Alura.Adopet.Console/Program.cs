@@ -6,7 +6,8 @@ var comandoDoSistema = new ComandosDoSistema(args);
 
 try
 {
-    string comando = args[0].Trim();
+    //string comando = args[0].Trim();
+    string comando = "help";
     IComando? cmd = comandoDoSistema[comando];
     if (cmd is not null)
     {

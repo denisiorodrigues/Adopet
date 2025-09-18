@@ -6,15 +6,17 @@ namespace Alura.Adopet.Console.Comandos;
 public class ComandosDoSistema
 {
     private HttpClientPet httpClientPet;
-    private Importar importar;
-    private Listar listar;
     private IDictionary<string, IComando> comandos;
     private LeitorDeArquivos leitorDeArquivos;
 
     public ComandosDoSistema(string[] args)
     {
         httpClientPet = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
-        leitorDeArquivos = new LeitorDeArquivos(args[1]);
+        if(args.Length > 1)
+        {
+            leitorDeArquivos = new LeitorDeArquivos(args[1]);
+        }
+
         comandos = new Dictionary<string, IComando>()
         {
             {"import", new Importar(httpClientPet, leitorDeArquivos)},

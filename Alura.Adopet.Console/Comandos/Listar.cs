@@ -1,8 +1,7 @@
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Atributos;
+using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
+using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos;
 
@@ -16,17 +15,19 @@ public class Listar : IComando
         this._client = client;
     }
     
-    public async Task ExecutarAsync(string[] args)
+    public async Task<Result> ExecutarAsync(string[] args)
     {
-        await this.Pets();
+        return await this.Pets();
     }
     
-    private async Task Pets()
+    private async Task<Result> Pets()
     {
         var pets = await this._client.ListPetsAsync();
         foreach(Pet pet in pets)
         {
             System.Console.WriteLine(pet);
         }
+
+        return Result.Ok();
     }
 }
