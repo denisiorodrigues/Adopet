@@ -16,8 +16,18 @@ public class Ajuda :IComando
     
     public Task<Result> ExecutarAsync(string[] args)
     {
-        this.Executar(args);
-        return Task.FromResult(Result.Ok());
+        Result result;
+        try
+        {
+            this.Executar(args);
+            result = Result.Ok();
+        }
+        catch (Exception ex)
+        {
+            result = Result.Fail(new Error("O camndo Ajuda(help) falhou!").CausedBy(ex));
+        }
+
+        return Task.FromResult(result);
     }
     
     private void Executar(string[] parametrosInformados)

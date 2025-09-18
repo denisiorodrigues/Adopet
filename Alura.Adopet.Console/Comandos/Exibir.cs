@@ -9,10 +9,19 @@ public class Exibir : IComando
 {
     public Task<Result> ExecutarAsync(string[] args)
     {
-        this.ItensDoArquivo(caminhoDoArquivoASerExibido: args[1]);
-        return Task.FromResult(Result.Ok());
+        Result result;
+        try
+        {
+            this.ItensDoArquivo(caminhoDoArquivoASerExibido: args[1]);
+            result = Result.Ok();
+        }
+        catch (Exception ex)
+        {
+            result = Result.Fail(new Error("O camndo Exibição(show) falhou!").CausedBy(ex));
+        }
+
+        return Task.FromResult(result);
     }
-    
     private void ItensDoArquivo(string caminhoDoArquivoASerExibido)
     {
         using (StreamReader sr = new StreamReader(caminhoDoArquivoASerExibido))

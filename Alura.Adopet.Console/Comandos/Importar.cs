@@ -25,22 +25,22 @@ public class Importar : IComando
     private async Task<Result> ArquivoPetAsync()
     {
         System.Console.WriteLine("----- Dados importados -----");
-        var listaDePets = _leitorDeArquivos.RealizarLeitura();
-
-        foreach (Pet pet in listaDePets)
+        try
         {
-            System.Console.WriteLine(pet);
-            try
+            var listaDePets = _leitorDeArquivos.RealizarLeitura();
+            
+            foreach (Pet pet in listaDePets)
             {
+                System.Console.WriteLine(pet);
                 var resposta = await _client.CreatePetAsync(pet);
             }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.Message);
-            }
-        }
 
-        System.Console.WriteLine("Importação concluída!");
-        return Result.Ok().WithSuccess(new SucessoComPet(listaDePets));
+            System.Console.WriteLine("Importação concluída!");
+            return Result.Ok().WithSuccess(new SucessoComPet(listaDePets));
+        }
+        catch (Exception ex)
+        {
+            return Result.Fail(new Error("Importação falhou!").CausedBy(ex));
+        }
     }
 }

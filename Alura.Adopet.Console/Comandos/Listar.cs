@@ -22,12 +22,19 @@ public class Listar : IComando
     
     private async Task<Result> Pets()
     {
-        var pets = await this._client.ListPetsAsync();
-        foreach(Pet pet in pets)
+        try
         {
-            System.Console.WriteLine(pet);
-        }
+            var pets = await this._client.ListPetsAsync();
+            foreach (Pet pet in pets)
+            {
+                System.Console.WriteLine(pet);
+            }
 
-        return Result.Ok();
+            return Result.Ok();
+        }
+        catch (Exception ex)
+        {
+           return Result.Fail(new Error("Não foi possível obter a lista de pets.").CausedBy(ex));
+        }
     }
 }

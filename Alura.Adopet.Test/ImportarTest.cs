@@ -38,7 +38,9 @@ namespace Alura.Adopet.Test
             var import = new Importar(httpClientPet.Object, leitor.Object);
 
             //Act+Assert
-            await Assert.ThrowsAnyAsync<Exception>(() => import.ExecutarAsync(args));
+            var resultado = await import.ExecutarAsync(args);
+
+            Assert.True(resultado.IsFailed);
         }
 
         [Fact]
