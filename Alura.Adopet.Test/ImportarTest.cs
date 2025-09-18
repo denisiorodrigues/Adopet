@@ -6,7 +6,7 @@ using Moq;
 
 namespace Alura.Adopet.Test
 {
-    public class ImportTest
+    public class ImportarTest
     {
         [Fact]
         public async Task DadoUmaListaVariaDeveVerificarSeOCreatAsyncExecutouPeloManoUmaVez()
@@ -57,9 +57,11 @@ namespace Alura.Adopet.Test
             string[] args = { "import", "lista.csv" };
             //Act
             var resultado = await import.ExecutarAsync(args);
+            var sucesso = resultado.Successes[0] as SucessoComPet;
+            
             //Assert
-
             Assert.True(resultado.IsSuccess);
+            Assert.Equal("Lima", sucesso.Data.First().Nome);
         }
     }
 }

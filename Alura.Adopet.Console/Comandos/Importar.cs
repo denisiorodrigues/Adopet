@@ -25,9 +25,9 @@ public class Importar : IComando
     private async Task<Result> ArquivoPetAsync()
     {
         System.Console.WriteLine("----- Dados importados -----");
-        var listDePets = _leitorDeArquivos.RealizarLeitura();
+        var listaDePets = _leitorDeArquivos.RealizarLeitura();
 
-        foreach (Pet pet in listDePets)
+        foreach (Pet pet in listaDePets)
         {
             System.Console.WriteLine(pet);
             try
@@ -41,6 +41,6 @@ public class Importar : IComando
         }
 
         System.Console.WriteLine("Importação concluída!");
-        return Result.Ok();
+        return Result.Ok().WithSuccess(new SucessoComPet(listaDePets));
     }
 }
