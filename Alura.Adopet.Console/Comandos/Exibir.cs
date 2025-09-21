@@ -1,4 +1,5 @@
 using Alura.Adopet.Console.Atributos;
+using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
 using FluentResults;
 
@@ -12,8 +13,8 @@ public class Exibir : IComando
         Result result;
         try
         {
-            this.ItensDoArquivo(caminhoDoArquivoASerExibido: args[1]);
-            result = Result.Ok();
+            var listaDePets = this.ItensDoArquivo(caminhoDoArquivoASerExibido: args[1]);
+            result = Result.Ok().WithSuccess(new SucessoComPet(listaDePets, "----- Serão importados os dados acima -----"));
         }
         catch (Exception ex)
         {
@@ -22,17 +23,13 @@ public class Exibir : IComando
 
         return Task.FromResult(result);
     }
-    private void ItensDoArquivo(string caminhoDoArquivoASerExibido)
+    private List<Pet> ItensDoArquivo(string caminhoDoArquivoASerExibido)
     {
         using (StreamReader sr = new StreamReader(caminhoDoArquivoASerExibido))
         {
-            System.Console.WriteLine("----- Serão importados os dados abaixo -----");
             var leitorDeArquivos =  new LeitorDeArquivos(caminhoDoArquivoASerExibido);
             var pets = leitorDeArquivos.RealizarLeitura();
-            foreach (var pet in pets) 
-            {
-                System.Console.WriteLine(pet);
-            }
+            return pets;
         }
     }
 }
