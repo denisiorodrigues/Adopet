@@ -1,30 +1,29 @@
 ﻿using Alura.Adopet.Console.Comandos;
+using Alura.Adopet.Console.Utilitariosç;
+using FluentResults;
 
 Console.ForegroundColor = ConsoleColor.Green;
+string [] comandos = ["import", "lista.csv"];
 
 var comandoDoSistema = new ComandosDoSistema(args);
 
-try
+//Console.WriteLine("Comandos digitados : ", args);
+//for (int i = 0; i < args.Length; i++)
+//{
+//    Console.WriteLine($"Argumento {i}: {args[i]}");
+//}
+
+
+
+string comando = args[0].Trim();
+//string comando = "help";
+IComando? cmd = comandoDoSistema[comando];
+if (cmd is not null)
 {
-    //string comando = args[0].Trim();
-    string comando = "help";
-    IComando? cmd = comandoDoSistema[comando];
-    if (cmd is not null)
-    {
-        await cmd.ExecutarAsync(args);
-    }
-    else
-    {
-        Console.WriteLine("Comando inválido!");
-    }
+    var resultado = await cmd.ExecutarAsync(args);
+    ConsoleUI.ExibeResultadoNaTela(resultado);
 }
-catch (Exception ex)
+else
 {
-    // mostra a exceção em vermelho
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine($"Aconteceu um exceção: {ex.Message}");
-}
-finally
-{
-    Console.ForegroundColor = ConsoleColor.White;
+    ConsoleUI.ExibeResultadoNaTela(Result.Fail("Comando inválido!"));
 }

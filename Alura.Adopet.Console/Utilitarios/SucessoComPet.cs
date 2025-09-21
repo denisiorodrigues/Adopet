@@ -11,4 +11,10 @@ public class SucessoComPet : Success
     {
         Data = listaDePets;
     }
+
+    public SucessoComPet(IEnumerable<Pet> listaDePets, string mensagemDeRetorno)
+        :base(mensagemDeRetorno)
+    {
+        Data = listaDePets;
+    }
 }
