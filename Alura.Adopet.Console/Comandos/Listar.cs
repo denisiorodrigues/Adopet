@@ -25,12 +25,7 @@ public class Listar : IComando
         try
         {
             var pets = await this._client.ListPetsAsync();
-            foreach (Pet pet in pets)
-            {
-                System.Console.WriteLine(pet);
-            }
-
-            return Result.Ok();
+            return Result.Ok().WithSuccess(new SucessoComPet(pets));
         }
         catch (Exception ex)
         {
