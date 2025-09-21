@@ -1,5 +1,4 @@
 using Alura.Adopet.Console.Atributos;
-using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
 using FluentResults;
 
