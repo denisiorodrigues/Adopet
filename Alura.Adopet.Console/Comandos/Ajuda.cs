@@ -4,7 +4,7 @@ using FluentResults;
 
 namespace Alura.Adopet.Console.Comandos;
 
-[DocComando(instrucao: "help", documentacao: "comando que exibe informações de ajuda.ao ")]
+[DocComando(instrucao: "help", documentacao: "adopet help <parametro> ous simplemente adopet help comando que exibe informações de ajuda dos comandos.")]
 public class Ajuda :IComando
 {
     private Dictionary<string, DocComando> docs;
@@ -19,8 +19,8 @@ public class Ajuda :IComando
         Result result;
         try
         {
-            this.Executar(args);
-            result = Result.Ok();
+            var listaDeDocumentacao = this.GerarDocumentacao(args);
+            result = Result.Ok().WithSuccess(new SucessoComDocumentacao(listaDeDocumentacao));
         }
         catch (Exception ex)
         {
@@ -30,20 +30,14 @@ public class Ajuda :IComando
         return Task.FromResult(result);
     }
     
-    private void Executar(string[] parametrosInformados)
+    private IEnumerable<string> GerarDocumentacao(string[] parametrosInformados)
     {
-        System.Console.WriteLine("Lista de comandos.");
+        var listaDeDocumentacao = new List<string>();
         if (parametrosInformados.Length == 1)
         {
-            System.Console.WriteLine(
-                "adopet help <parametro> ous simplemente adopet help comando que exibe informações de ajuda dos comandos.");
-            System.Console.WriteLine("Adopet (1.0) - Aplicativo de linha de comando (CLI).");
-            System.Console.WriteLine("Realiza a importação em lote de um arquivos de pets.");
-            System.Console.WriteLine("Comando possíveis: ");
-
             foreach (DocComando comando in docs.Values)
             {
-                System.Console.WriteLine(comando.Documentacao);
+                listaDeDocumentacao.Add(comando.Documentacao);
             }
         }
         else if (parametrosInformados.Length == 2)
@@ -52,12 +46,14 @@ public class Ajuda :IComando
             if (docs.ContainsKey(comandoASerExibido))
             {
                 var comando = docs[comandoASerExibido];
-                System.Console.WriteLine(comando.Documentacao);
+                listaDeDocumentacao.Add(comando.Documentacao);
             }
             else
             {
-                System.Console.WriteLine($"adopet comando não encontrado.");
+                listaDeDocumentacao.Add($"adopet comando não encontrado.");
             }
         }
+
+        return listaDeDocumentacao;
     }
 }
