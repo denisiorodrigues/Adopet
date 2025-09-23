@@ -12,10 +12,7 @@ public class ComandosDoSistema
     public ComandosDoSistema(string[] args)
     {
         httpClientPet = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
-        if(args.Length > 1)
-        {
-            leitorDeArquivos = new LeitorDeArquivos(args[1]);
-        }
+        leitorDeArquivos = args.Length == 2 ? new LeitorDeArquivos(args[1]) : null;
 
         comandos = new Dictionary<string, IComando>()
         {

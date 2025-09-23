@@ -3,16 +3,12 @@ using Alura.Adopet.Console.Utilitariosç;
 using FluentResults;
 
 Console.ForegroundColor = ConsoleColor.Green;
-string [] comandos = ["import", "lista.csv"];
 
-var comandoDoSistema = new ComandosDoSistema(args);
+var comandoDoSistema = FabricaDeComandos.CriarComando(args);
 
-string comando = args[0].Trim();
-//string comando = "help";
-IComando? cmd = comandoDoSistema[comando];
-if (cmd is not null)
+if (comandoDoSistema is not null)
 {
-    var resultado = await cmd.ExecutarAsync();
+    var resultado = await comandoDoSistema.ExecutarAsync();
     ConsoleUI.ExibeResultadoNaTela(resultado);
 }
 else
