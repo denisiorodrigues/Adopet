@@ -20,8 +20,8 @@ public class ComandosDoSistema
         comandos = new Dictionary<string, IComando>()
         {
             {"import", new Importar(httpClientPet, leitorDeArquivos)},
-            {"help", new Ajuda()},
-            {"show", new Exibir()},
+            {"help", new Ajuda(comandoASerExibido: args[1])},
+            {"show", new Exibir(leitorDeArquivos)},
             {"list", new Listar(httpClientPet)},
         };
     }

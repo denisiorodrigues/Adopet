@@ -18,7 +18,7 @@ namespace Alura.Adopet.Test
             var importar = new Importar(httpClientPetMock.Object, leitorDeArquivo.Object);
             var args = new string[] { "import", "animais.csv" };
 
-            await importar.ExecutarAsync(args);
+            await importar.ExecutarAsync();
             
             httpClientPetMock.Verify(_ => _.CreatePetAsync(It.IsAny<Pet>()), Times.Never);
         }
@@ -38,7 +38,7 @@ namespace Alura.Adopet.Test
             var import = new Importar(httpClientPet.Object, leitor.Object);
 
             //Act+Assert
-            var resultado = await import.ExecutarAsync(args);
+            var resultado = await import.ExecutarAsync();
 
             Assert.True(resultado.IsFailed);
         }
@@ -58,7 +58,7 @@ namespace Alura.Adopet.Test
             var import = new Importar(httpClientPet.Object, leitorDeArquivo.Object);
             string[] args = { "import", "lista.csv" };
             //Act
-            var resultado = await import.ExecutarAsync(args);
+            var resultado = await import.ExecutarAsync();
             var sucesso = resultado.Successes[0] as SucessoComPet;
             
             //Assert

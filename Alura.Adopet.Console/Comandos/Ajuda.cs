@@ -8,18 +8,20 @@ namespace Alura.Adopet.Console.Comandos;
 public class Ajuda :IComando
 {
     private Dictionary<string, DocComando> docs;
+    private string? comandoASerExibido;
 
-    public Ajuda()
+    public Ajuda(string? comandoASerExibido)
     {
         docs = DocumentacaoDoSistema.ObterTodos();
+        this.comandoASerExibido = comandoASerExibido;
     }
-    
-    public Task<Result> ExecutarAsync(string[] args)
+
+    public Task<Result> ExecutarAsync()
     {
         Result result;
         try
         {
-            var listaDeDocumentacao = this.GerarDocumentacao(args);
+            var listaDeDocumentacao = this.GerarDocumentacao();
             result = Result.Ok().WithSuccess(new SucessoComDocumentacao(listaDeDocumentacao));
         }
         catch (Exception ex)
@@ -30,22 +32,21 @@ public class Ajuda :IComando
         return Task.FromResult(result);
     }
     
-    private IEnumerable<string> GerarDocumentacao(string[] parametrosInformados)
+    private IEnumerable<string> GerarDocumentacao()
     {
         var listaDeDocumentacao = new List<string>();
-        if (parametrosInformados.Length == 1)
+        if (this.comandoASerExibido is null)
         {
             foreach (DocComando comando in docs.Values)
             {
                 listaDeDocumentacao.Add(comando.Documentacao);
             }
         }
-        else if (parametrosInformados.Length == 2)
+        else
         {
-            string comandoASerExibido = parametrosInformados[1];
-            if (docs.ContainsKey(comandoASerExibido))
+            if (docs.ContainsKey(this.comandoASerExibido))
             {
-                var comando = docs[comandoASerExibido];
+                var comando = docs[this.comandoASerExibido];
                 listaDeDocumentacao.Add(comando.Documentacao);
             }
             else

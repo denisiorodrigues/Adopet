@@ -14,7 +14,7 @@ public class Listar : IComando
         this._client = client;
     }
     
-    public async Task<Result> ExecutarAsync(string[] args)
+    public async Task<Result> ExecutarAsync()
     {
         return await this.Pets();
     }
