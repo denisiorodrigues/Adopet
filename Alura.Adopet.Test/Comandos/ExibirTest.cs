@@ -4,7 +4,7 @@ using Alura.Adopet.Console.Utilitarios;
 using Alura.Adopet.Test.DataBuilder;
 using Moq;
 
-namespace Alura.Adopet.Test;
+namespace Alura.Adopet.Test.Comandos;
 
 public class ExibirTest
 {
