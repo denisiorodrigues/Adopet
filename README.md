@@ -62,3 +62,7 @@ Abaixo as principais tecnologias que está sendo utilizada para construir este p
     ```bash
     dotnet run --project ./Alura.Adopet.API/
     ```
+
+
+Melhor artigo que fala de SOLID.
+https://www.alura.com.br/artigos/solid
