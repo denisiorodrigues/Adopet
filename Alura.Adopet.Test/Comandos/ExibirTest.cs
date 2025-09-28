@@ -1,5 +1,4 @@
 ﻿using Alura.Adopet.Console.Comandos;
-using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
 using Alura.Adopet.Test.DataBuilder;
 using Moq;
