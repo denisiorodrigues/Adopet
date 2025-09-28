@@ -51,7 +51,8 @@ public class Ajuda :IComando
             }
             else
             {
-                listaDeDocumentacao.Add($"adopet comando não encontrado.");
+                listaDeDocumentacao.Add("adopet comando não encontrado.");
+                throw new Exception($"Comando não encontrado.");
             }
         }
 
