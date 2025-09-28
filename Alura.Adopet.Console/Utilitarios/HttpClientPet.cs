@@ -13,7 +13,7 @@ public class HttpClientPet
         _httpClient = httpClient;
     }
 
-    public async Task<IEnumerable<Pet>?> ListPetsAsync()
+    public virtual async Task<IEnumerable<Pet>?> ListPetsAsync()
     {
         HttpResponseMessage response = await _httpClient.GetAsync("pet/list");
         return await response.Content.ReadFromJsonAsync<IEnumerable<Pet>>();
