@@ -21,7 +21,7 @@ public class Exibir : IComando
         try
         {
             var listaDePets = this.ItensDoArquivo();
-            result = Result.Ok().WithSuccess(new SucessoComPet(listaDePets, "----- Serão importados os dados acima -----"));
+            result = Result.Ok().WithSuccess(new SucessoComPet(listaDePets, "Exibição do arquivo realizada com sucesso"));
         }
         catch (Exception ex)
         {

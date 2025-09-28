@@ -27,6 +27,7 @@ public class ExibirTest
         Assert.True(result.IsSuccess);
         Assert.NotNull(petComsuCesso);
         Assert.Equal(2, petComsuCesso.Data.Count());
+        Assert.Equal("Exibição do arquivo realizada com sucesso", petComsuCesso.Message);
     }
 
     [Fact]
