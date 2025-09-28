@@ -3,10 +3,15 @@ using Alura.Adopet.Console.Utilitarios;
 
 namespace Alura.Adopet.Console.Comandos;
 
-internal static class FabricaDeComandos
+public static class FabricaDeComandos
 {
     public static IComando CriarComando(string[] argumentos)
     {
+        if (argumentos is null)
+        {
+            return null;
+        }
+
         var comando = argumentos[0];
         var segundoComando = argumentos.Length > 1 ? argumentos[1] : null;
 
