@@ -7,7 +7,7 @@ namespace Alura.Adopet.Test.Comandos;
 
 public class ExibirTest
 {
-    Mock<LeitorDeArquivos> LeitorDeArquivoMock;
+    Mock<LeitorDeArquivoCsv> LeitorDeArquivoMock;
 
     public ExibirTest()
     {

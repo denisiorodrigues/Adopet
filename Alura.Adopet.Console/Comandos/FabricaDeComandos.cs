@@ -19,13 +19,13 @@ public static class FabricaDeComandos
         {
             case "import":
                 var httpClientPet = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
-                LeitorDeArquivos leitorDeArquivos = new(segundoComando);
+                LeitorDeArquivoCsv leitorDeArquivos = new(segundoComando);
                 return new Importar(httpClientPet, leitorDeArquivos);
             case "list":
                 var httpClientPetList = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
                 return new Listar(httpClientPetList);
             case "show":
-                LeitorDeArquivos leitorDeArquivosShow = new(segundoComando);
+                LeitorDeArquivoCsv leitorDeArquivosShow = new(segundoComando);
                 return new Exibir(leitorDeArquivosShow);
             case "help":
                 return new Ajuda(segundoComando);

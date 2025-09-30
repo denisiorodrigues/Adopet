@@ -7,12 +7,12 @@ public class ComandosDoSistema
 {
     private HttpClientPet httpClientPet;
     private IDictionary<string, IComando> comandos;
-    private LeitorDeArquivos leitorDeArquivos;
+    private LeitorDeArquivoCsv leitorDeArquivos;
 
     public ComandosDoSistema(string[] args)
     {
         httpClientPet = new HttpClientPet(new AdopetAPIClientFactory().CreateClient("adopet"));
-        leitorDeArquivos = args.Length == 2 ? new LeitorDeArquivos(args[1]) : null;
+        leitorDeArquivos = args.Length == 2 ? new LeitorDeArquivoCsv(args[1]) : null;
 
         comandos = new Dictionary<string, IComando>()
         {

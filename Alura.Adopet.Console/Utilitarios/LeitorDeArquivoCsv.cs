@@ -3,11 +3,11 @@ using Alura.Adopet.Console.Modelo;
 
 namespace Alura.Adopet.Console.Utilitarios;
 
-public class LeitorDeArquivos
+public class LeitorDeArquivoCsv
 {
     private readonly string? caminhoDoArquivoASerLido;
 
-    public LeitorDeArquivos(string? caminhoDoArquivoASerLido)
+    public LeitorDeArquivoCsv(string? caminhoDoArquivoASerLido)
     {
         this.caminhoDoArquivoASerLido = caminhoDoArquivoASerLido;
     }
