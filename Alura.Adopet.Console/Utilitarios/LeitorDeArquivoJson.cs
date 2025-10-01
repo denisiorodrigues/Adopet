@@ -1,10 +1,11 @@
 ﻿
+using Alura.Adopet.Console.Abstracoes;
 using Alura.Adopet.Console.Modelo;
 using System.Text.Json;
 
 namespace Alura.Adopet.Console.Utilitarios;
 
-public class LeitorDeArquivoJson
+public class LeitorDeArquivoJson : ILeitorDeArquivo
 {
     private string? caminhoDoArquivoASerLido;
     public LeitorDeArquivoJson(string? caminhoDoArquivoASerLido)

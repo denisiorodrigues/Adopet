@@ -1,3 +1,4 @@
+using Alura.Adopet.Console.Abstracoes;
 using Alura.Adopet.Console.Atributos;
 using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
@@ -9,12 +10,12 @@ namespace Alura.Adopet.Console.Comandos;
 public class Importar : IComando
 {
     private readonly HttpClientPet _client;
-    private readonly LeitorDeArquivoCsv _leitorDeArquivos;
+    private readonly ILeitorDeArquivo _leitorDeArquivo;
 
-    public Importar(HttpClientPet client, LeitorDeArquivoCsv leitorDeArquivos)
+    public Importar(HttpClientPet client, ILeitorDeArquivo leitorDeArquivo)
     {
         _client = client;
-        _leitorDeArquivos = leitorDeArquivos;
+        _leitorDeArquivo = leitorDeArquivo;
     }
 
     public async Task<Result> ExecutarAsync()
@@ -26,7 +27,7 @@ public class Importar : IComando
     {
         try
         {
-            var listaDePets = _leitorDeArquivos.RealizarLeitura();
+            var listaDePets = _leitorDeArquivo.RealizarLeitura();
             
             foreach (Pet pet in listaDePets)
             {

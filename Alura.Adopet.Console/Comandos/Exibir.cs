@@ -1,3 +1,4 @@
+using Alura.Adopet.Console.Abstracoes;
 using Alura.Adopet.Console.Atributos;
 using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
@@ -8,11 +9,11 @@ namespace Alura.Adopet.Console.Comandos;
 [DocComando(instrucao: "show", documentacao: "adopet show <arquivo> comando que exibe no terminal o conteúdo do arquivo importado.")]
 public class Exibir : IComando
 {
-    private readonly LeitorDeArquivoCsv _leitorDeArquivos;
+    private readonly ILeitorDeArquivo _leitorDeArquivo;
 
-    public Exibir(LeitorDeArquivoCsv leitorDeArquivos)
+    public Exibir(ILeitorDeArquivo leitorDeArquivo)
     {
-        _leitorDeArquivos = leitorDeArquivos;
+        _leitorDeArquivo = leitorDeArquivo;
     }
 
     public Task<Result> ExecutarAsync()
@@ -30,9 +31,9 @@ public class Exibir : IComando
 
         return Task.FromResult(result);
     }
-    private List<Pet> ItensDoArquivo()
+    private IEnumerable<Pet> ItensDoArquivo()
     {
-        var pets = _leitorDeArquivos.RealizarLeitura();
+        var pets = _leitorDeArquivo.RealizarLeitura();
         return pets;
     }
 }

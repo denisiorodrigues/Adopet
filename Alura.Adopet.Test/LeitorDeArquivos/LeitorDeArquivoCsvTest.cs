@@ -19,7 +19,7 @@ public class LeitorDeArquivoCsvTest
     {
         //Arrange            
         //Act
-        List<Pet> listaDePets = new LeitorDeArquivoCsv(caminhoArquivo).RealizarLeitura()!;
+        var listaDePets = new LeitorDeArquivoCsv(caminhoArquivo).RealizarLeitura()!;
         //Assert
         Assert.NotNull(listaDePets);
         Assert.Single(listaDePets);
