@@ -8,7 +8,7 @@ namespace Alura.Adopet.Test;
 
 public class ImportIntegrationTest
 {
-    [Fact]
+    [Fact(Skip ="API Desabilitada")]
     public async Task QuandoAPIIEstaNoArDeveRetornarLista()
     {
         var pet = new Pet(new Guid(), "Lima", TipoPet.Cachorro);
@@ -21,7 +21,7 @@ public class ImportIntegrationTest
         var args = new string[] { "import", "animais.csv" };
 
         await importar.ExecutarAsync();
-        var listaPets = await httpClientPet.ListPetsAsync();
+        var listaPets = await httpClientPet.ListAsync();
 
         Assert.NotNull(listaPets);
     }

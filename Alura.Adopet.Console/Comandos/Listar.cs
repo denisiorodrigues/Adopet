@@ -1,3 +1,4 @@
+using Alura.Adopet.Console.Abstracoes;
 using Alura.Adopet.Console.Atributos;
 using Alura.Adopet.Console.Utilitarios;
 using FluentResults;
@@ -7,9 +8,9 @@ namespace Alura.Adopet.Console.Comandos;
 [DocComando(instrucao: "list", documentacao: "adopet list comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
 public class Listar : IComando
 {
-    private HttpClientPet _client;
+    private IApiService _client;
 
-    public Listar(HttpClientPet client)
+    public Listar(IApiService client)
     {
         this._client = client;
     }
@@ -23,7 +24,7 @@ public class Listar : IComando
     {
         try
         {
-            var pets = await this._client.ListPetsAsync();
+            var pets = await this._client.ListAsync();
             return Result.Ok().WithSuccess(new SucessoComPet(pets));
         }
         catch (Exception ex)

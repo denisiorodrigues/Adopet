@@ -20,7 +20,7 @@ namespace Alura.Adopet.Test.Comandos
 
             await importar.ExecutarAsync();
             
-            httpClientPetMock.Verify(_ => _.CreatePetAsync(It.IsAny<Pet>()), Times.Never);
+            httpClientPetMock.Verify(_ => _.CreateAsync(It.IsAny<Pet>()), Times.Never);
         }
 
         [Fact]

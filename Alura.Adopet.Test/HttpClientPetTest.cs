@@ -15,7 +15,7 @@ public class HttpClientPetTest
         httpClient.Object.BaseAddress = new Uri("http://localhost:5057");
         var httpClientPet = new HttpClientPet(httpClient.Object);
 
-        var pets = await httpClientPet.ListPetsAsync();
+        var pets = await httpClientPet.ListAsync();
 
         Assert.NotNull(pets);
         Assert.NotEmpty(pets);
@@ -29,6 +29,6 @@ public class HttpClientPetTest
         httpClient.Object.BaseAddress = new Uri("http://localhost:5057");
         var httpClientPet = new HttpClientPet(httpClient.Object);
         
-        Assert.ThrowsAsync<Exception>(() => httpClientPet.ListPetsAsync());
+        Assert.ThrowsAsync<Exception>(() => httpClientPet.ListAsync());
     }
 }
