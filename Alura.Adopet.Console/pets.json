@@ -1,0 +1,27 @@
+[
+  {
+    "ID": "456b24f4-19e2-4423-845d-4a80e8854a41",
+    "Nome": "Lima Limão",
+    "Status": 1
+  },
+  {
+    "ID": "3aeff89d-7da2-4603-852e-d232fbdc56bd",
+    "Nome": "Caito",
+    "Status": 1
+  },
+  {
+    "ID": "bcdcb7a4-1279-4a6b-97e9-da6378ae6437",
+    "Nome": "Jujuba",
+    "Status": 0
+  },
+  {
+    "ID": "609c9b0d-aa02-459f-a340-256513fc9bad",
+    "Nome": "Nina",
+    "Status": 0
+  },
+  {
+    "ID": "01303089-833f-46ff-9f06-77f9d4f89f1d",
+    "Nome": "Perdido",
+    "Status": 1
+  }
+]

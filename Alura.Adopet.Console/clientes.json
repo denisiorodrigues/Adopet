@@ -1,0 +1,20 @@
+[
+  {
+    "Id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+    "Nome": "João Silva",
+    "CPF": "123.456.789-00",
+    "Email": "joao.silva@email.com"
+  },
+  {
+    "Id": "f0e9d8c7-b6a5-4321-fedc-ba9876543210",
+    "Nome": "Maria Oliveira",
+    "CPF": "987.654.321-11",
+    "Email": "maria.oliveria@email.com"
+  },
+  {
+    "Id": "11223344-5566-7788-99aa-bbccddeeff00",
+    "Nome": "Pedro Souza",
+    "CPF": "456.789.012-22",
+    "Email": "pedro.souza@email.com"
+  }
+]
