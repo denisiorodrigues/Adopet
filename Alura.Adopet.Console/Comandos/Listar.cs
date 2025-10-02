@@ -1,5 +1,6 @@
 using Alura.Adopet.Console.Abstracoes;
 using Alura.Adopet.Console.Atributos;
+using Alura.Adopet.Console.Modelo;
 using Alura.Adopet.Console.Utilitarios;
 using FluentResults;
 
@@ -8,9 +9,9 @@ namespace Alura.Adopet.Console.Comandos;
 [DocComando(instrucao: "list", documentacao: "adopet list comando que exibe no terminal o conteúdo da base de dados da AdoPet.")]
 public class Listar : IComando
 {
-    private IApiService _client;
+    private IApiService<Pet> _client;
 
-    public Listar(IApiService client)
+    public Listar(IApiService<Pet> client)
     {
         this._client = client;
     }

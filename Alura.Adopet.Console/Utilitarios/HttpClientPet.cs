@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 
 namespace Alura.Adopet.Console.Utilitarios;
 
-public class HttpClientPet : IApiService
+public class HttpClientPet : IApiService<Pet>
 {
     private HttpClient _httpClient;
 

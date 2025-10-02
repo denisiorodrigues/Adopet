@@ -1,9 +1,7 @@
-﻿using Alura.Adopet.Console.Modelo;
+﻿namespace Alura.Adopet.Console.Abstracoes;
 
-namespace Alura.Adopet.Console.Abstracoes;
-
-public interface IApiService
+public interface IApiService<T>
 {
-    Task CreateAsync(Pet pet);
-    Task<IEnumerable<Pet>?> ListAsync();
+    Task CreateAsync(T objeto);
+    Task<IEnumerable<T>?> ListAsync();
 }
